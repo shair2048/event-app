@@ -8,9 +8,19 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import { FontAwesome5 } from "@expo/vector-icons";
-import * as Font from "expo-font";
+import { useFonts } from "expo-font";
 
 export default function Login() {
+  const [fontsLoaded] = useFonts({
+    "Urbanist-Bold": require("../assets/fonts/Urbanist-Bold.ttf"),
+    "Urbanist-SemiBold": require("../assets/fonts/Urbanist-SemiBold.ttf"),
+    "Urbanist-Medium": require("../assets/fonts/Urbanist-Medium.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -65,6 +75,7 @@ const textInput = {
   borderRadius: 8,
   backgroundColor: "#F7F8F9",
   padding: 18,
+  fontFamily: "Urbanist-Medium",
 };
 
 const styles = StyleSheet.create({
@@ -91,8 +102,8 @@ const styles = StyleSheet.create({
   },
   txtWelcome: {
     fontSize: 30,
-    fontWeight: "bold",
-    // fontFamily: "Urbanist",
+    // fontWeight: "bold",
+    fontFamily: "Urbanist-Bold",
     marginBottom: 32,
   },
   inputEmail: {
@@ -109,8 +120,8 @@ const styles = StyleSheet.create({
   },
   txtForgotPassword: {
     fontSize: 14,
-    fontWeight: "600",
     color: "#6A707C",
+    fontFamily: "Urbanist-SemiBold",
   },
   btnLogin: {
     height: 56,
@@ -122,8 +133,8 @@ const styles = StyleSheet.create({
   },
   txtLogin: {
     fontSize: 15,
-    fontWeight: "600",
     color: "#FFFFFF",
+    fontFamily: "Urbanist-SemiBold",
   },
   loginOther: {
     alignItems: "center",
@@ -141,9 +152,9 @@ const styles = StyleSheet.create({
   },
   txtOrLoginWith: {
     fontSize: 14,
-    fontWeight: "600",
     marginHorizontal: 12,
     color: "#6A707C",
+    fontFamily: "Urbanist-SemiBold",
   },
   btnLoginWithGoogle: {
     width: 105,
@@ -159,9 +170,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: "#1E232C",
     marginBottom: 26,
+    fontFamily: "Urbanist-Medium",
   },
   txtRegisterNow: {
     color: "#35C2C1",
-    fontWeight: "bold",
+    fontFamily: "Urbanist-Bold",
   },
 });
